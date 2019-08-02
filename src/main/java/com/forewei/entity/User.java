@@ -1,6 +1,7 @@
 package com.forewei.entity;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.util.Date;
 
@@ -10,6 +11,7 @@ import java.util.Date;
  * @Email: forewei2015@gmail.com
  */
 @Data
+@Accessors(chain = true)
 public class User {
     /**
      * 用户id

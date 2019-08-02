@@ -20,7 +20,7 @@ public class SeckillApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SeckillApplication.class, args);
-        LOGGER.info("秒杀项目启动成功");
+        LOGGER.info("Seckill started");
     }
 
 }

@@ -1,0 +1,12 @@
+logging:
+  level:
+    # 该属性在“生产环境”需要设置为“warn”
+    root: info
+  # 日志的存放路径
+  path: logs
+  file:
+    max-history: 90
+
+server:
+  # Server HTTP port.
+  port: 8888

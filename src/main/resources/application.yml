@@ -10,6 +10,8 @@ logging:
 server:
   # Server HTTP port.
   port: 8888
+  servlet:
+    context-path: /forewei-seckill
 
  # redis相关配置
 redis:

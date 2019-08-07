@@ -6,10 +6,11 @@ import com.forewei.entity.Goods;
 import com.forewei.mapper.GoodsMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
 
 /**
  * @Date: Create By on 2019/8/5
@@ -18,7 +19,6 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@MapperScan("com.forewei.mapper")
 public class MybatisCRUDTest {
 
     @Autowired
@@ -26,6 +26,9 @@ public class MybatisCRUDTest {
 
     @Test
     public void ListTest() {
-        System.out.println(goodsMapper.selectList(new QueryWrapper<Goods>()));
+        System.out.println(("----- selectAll method test ------"));
+        List<Goods> goods = goodsMapper.selectList(new QueryWrapper<Goods>());
+        goods.forEach(System.out::println);
+
     }
 }

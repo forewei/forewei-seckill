@@ -23,7 +23,7 @@ spring:
     url: jdbc:mysql://39.108.131.51:3456/forewei_seckill?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
     username: root
     password: 123456
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     max-active: 1000
     initialSize: 100

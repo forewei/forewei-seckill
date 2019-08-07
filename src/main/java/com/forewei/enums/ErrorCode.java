@@ -9,7 +9,10 @@ package com.forewei.enums;
  */
 public enum ErrorCode {
 
-    SERVER_ERROR(500, "服务端异常");
+    SERVER_ERROR(500, "服务端异常"),
+    PARAMETER_ERROR(10001, "请求参数异常"),
+    USER_NOT_EXIST(50001, "账号不存在"),
+    PASSWORD_ERROR(50002, "密码错误");
 
 
     private int errorCode;

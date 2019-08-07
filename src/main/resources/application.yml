@@ -37,4 +37,24 @@ spring:
     testOnReturn: false
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
-
+  # 消息队列配置
+  rabbitmq:
+    host: 39.108.131.51
+    port: 5672
+    username: user
+    password: user
+    virtual-host: /
+    template:
+      retry:
+        enabled: true
+        initial-interval: 1000
+        max-attempts: 3
+        max-interval: 10000
+        multiplier: 1.0
+    listener:
+      simple:
+        prefetch: 1
+        concurrency: 10
+        max-concurrency: 10
+        auto-startup: true
+        default-requeue-rejected: true

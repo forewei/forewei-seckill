@@ -2,6 +2,7 @@ package com.forewei.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
@@ -12,6 +13,7 @@ import lombok.Data;
  * @Email: forewei2015@gmail.com
  */
 @Data
+@TableName(value = "t_seckill_order")
 public class SeckillOrder {
     /**
      * 秒杀订单id

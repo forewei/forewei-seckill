@@ -2,6 +2,7 @@ package com.forewei.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.util.Date;
@@ -14,6 +15,7 @@ import java.util.Date;
  * @Email: forewei2015@gmail.com
  */
 @Data
+@TableName("t_order_info")
 public class OrderInfo {
     /**
      * 主键id

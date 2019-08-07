@@ -13,6 +13,7 @@ import com.forewei.vo.LoginVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 
@@ -34,6 +35,7 @@ public class UserService {
 
     public static final int TOKEN_EXPIRE = 3600 * 24 * 2;//默认两天
 
+    @PostConstruct
     public void test() {
 
     }

@@ -2,6 +2,8 @@ package com.forewei.service;
 
 import com.alibaba.druid.util.StringUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.forewei.component.RedisComponent;
 import com.forewei.entity.User;
 import com.forewei.enums.ErrorCode;
@@ -16,6 +18,8 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Date: Create By on 2019/8/7
@@ -38,6 +42,13 @@ public class UserService {
     @PostConstruct
     public void test() {
 
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>(new User());
+        IPage<User> page = new Page<>(2, 1);
+        IPage<User> userIPage = userMapper.selectPage(page, queryWrapper);
+        List<User> users = userIPage.getRecords().stream().collect(Collectors.toList());
+        users.forEach(f -> {
+            System.out.println(f);
+        });
     }
 
     /**
@@ -61,7 +72,7 @@ public class UserService {
         //验证密码
         String dbPass = user.getPassword();
         String saltDB = user.getSalt();
-        String calcPass = MD5Util.formPassToDBPass(formPass, saltDB);
+        String calcPass = MD5Util.inputPassToDbPass(formPass, saltDB);
         if (!calcPass.equals(dbPass)) {
             throw new MessageException(ErrorCode.PASSWORD_ERROR);
         }

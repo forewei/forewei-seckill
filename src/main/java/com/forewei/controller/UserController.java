@@ -2,12 +2,16 @@ package com.forewei.controller;
 
 import com.forewei.result.HttpResult;
 import com.forewei.service.UserService;
+import com.forewei.vo.LoginVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 /**
  * @Date: Create By on 2019/8/7
@@ -19,6 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/user")
 public class UserController {
 
+    private static Logger log = LoggerFactory.getLogger(UserController.class);
+
     @Autowired
     private UserService userService;
 
@@ -27,5 +33,11 @@ public class UserController {
     public HttpResult<String> test() {
         userService.test();
         return HttpResult.success("dasda");
+    }
+
+    @PostMapping("/login")
+    @ApiOperation(value = "登录")
+    public HttpResult<String> login(HttpServletResponse response, @Valid @RequestBody LoginVo vo) {
+        return HttpResult.success(userService.login(response, vo));
     }
 }

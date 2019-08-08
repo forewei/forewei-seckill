@@ -17,9 +17,6 @@ public class MessageException extends RuntimeException {
     private static final long servialVersionUID = 1L;
     private ErrorCode errorCode;
 
-
-
-
     public MessageException(ErrorCode errorCode) {
         super(errorCode.getErrorDesc());
         this.errorCode = errorCode;

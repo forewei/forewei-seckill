@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.forewei.component.RedisComponent;
+import com.forewei.consts.CacheKeyConst;
 import com.forewei.entity.User;
 import com.forewei.enums.ErrorCode;
 import com.forewei.exception.MessageException;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -78,8 +80,20 @@ public class UserService {
         }
         //生成唯一id作为token
         String token = UUIDUtil.uuid();
+        updateLoginInfo(user);
         addCookie(response, token, user);
         return token;
+    }
+
+    /**
+     * 登录信息更新
+     *
+     * @param user
+     */
+    private void updateLoginInfo(User user) {
+        user.setLoginCount(user.getLoginCount() + 1);
+        user.setLastLoginDate(new Date());
+        userMapper.updateById(user);
     }
 
     private User getById(long mobile) {
@@ -99,7 +113,7 @@ public class UserService {
     }
 
     private void addCookie(HttpServletResponse response, String token, User user) {
-        redisComponent.set(token, user);
+        redisComponent.set(CacheKeyConst.TOKEN + token, user);
         Cookie cookie = new Cookie(TOKEN, token);
         cookie.setMaxAge(TOKEN_EXPIRE);
         cookie.setPath("/");//设置为网站根目录

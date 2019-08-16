@@ -28,12 +28,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/test")
-    @ApiOperation(value = "测试接口", httpMethod = "GET")
-    public HttpResult<String> test() {
-        userService.test();
-        return HttpResult.success("dasda");
-    }
 
     @PostMapping("/login")
     @ApiOperation(value = "登录")

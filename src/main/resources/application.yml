@@ -22,7 +22,7 @@ redis:
 spring:
   # 数据库配置
   datasource:
-    url: jdbc:mysql://39.108.131.51:3456/forewei_seckill?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
+    url: jdbc:mysql://www.forewei.com:3456/forewei_seckill?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -41,7 +41,7 @@ spring:
     maxOpenPreparedStatements: 20
   # 消息队列配置
   rabbitmq:
-    host: 39.108.131.51
+    host: www.forewei.com
     port: 5672
     username: user
     password: user

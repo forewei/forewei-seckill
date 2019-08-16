@@ -14,7 +14,6 @@ import org.springframework.context.annotation.ComponentScan;
  * @date 2019-5-21 17:27
  */
 @SpringBootApplication
-@ComponentScan("com.forewei")
 public class SeckillApplication {
     private final static Logger LOGGER = LoggerFactory.getLogger(SeckillApplication.class);
 

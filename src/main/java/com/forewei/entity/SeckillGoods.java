@@ -29,6 +29,13 @@ public class SeckillGoods {
     @TableField("goods_id")
     private Long goodsId;
 
+
+    /**
+     * 秒杀金额
+     */
+    @TableField("seckill_price")
+    private Double seckillPrice;
+
     /**
      * 库存数量
      */

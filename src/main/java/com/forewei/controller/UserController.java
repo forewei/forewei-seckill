@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
@@ -33,5 +34,11 @@ public class UserController {
     @ApiOperation(value = "登录")
     public HttpResult<String> login(HttpServletResponse response, @Valid @RequestBody LoginVo vo) {
         return HttpResult.success(userService.login(response, vo));
+    }
+    @PostMapping("/logout")
+    @ApiOperation(value = "注销")
+    public HttpResult<String> logout(HttpServletRequest request){
+        userService.logout(request);
+       return HttpResult.success("注销成功");
     }
 }
